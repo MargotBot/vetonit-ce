@@ -4,20 +4,67 @@
     --voi-blue: #77ADCF;
     --voi-text: #2D3436;
     --voi-background: #FAF9F6;
+    --gradient-accent: linear-gradient(135deg, var(--voi-blue), var(--voi-green));
 }
 
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
     color: var(--voi-text);
     background-color: var(--voi-background);
     line-height: 1.6;
 }
 
+/* Hero Section */
+.hero-section {
+    position: relative;
+    background-image: url('../assets/images/hero-bg.svg');
+    background-size: cover;
+    background-position: center;
+    padding: 8rem 0;
+    color: white;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Wave Divider */
+.wave-divider {
+    position: relative;
+    height: 4rem;
+    background: var(--voi-background);
+    overflow: hidden;
+}
+
+.wave-divider svg {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+
 /* Navigation */
 .navbar {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
 .navbar-brand img {
@@ -29,72 +76,122 @@ body {
 .feature-card {
     background: #ffffff;
     padding: 2.5rem;
-    border-radius: 16px;
+    border-radius: 24px;
     height: 100%;
     transition: all 0.3s ease;
     box-shadow: 0 8px 24px rgba(0,0,0,0.07);
     border: 1px solid rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--gradient-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    color: white;
+    transition: all 0.3s ease;
 }
 
 .feature-card:hover {
     transform: translateY(-5px);
 }
 
-.feature-icon {
-    font-size: 2.5rem;
-    color: var(--voi-blue);
-    margin-bottom: 1.5rem;
+.feature-card:hover .feature-icon {
+    transform: scale(1.1) rotate(5deg);
 }
 
-/* Buttons */
-.btn-primary {
-    background-color: var(--voi-blue);
-    border-color: var(--voi-blue);
-    padding: 0.75rem 2rem;
-    font-weight: 600;
-    border-radius: 25px;
+/* What You'll Learn Section */
+.learn-section {
+    background: var(--gradient-accent);
+    color: white;
+    padding: 6rem 0;
+    position: relative;
+}
+
+.learn-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 2rem;
+    height: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
 }
 
-.btn-primary:hover {
-    background-color: var(--voi-green);
-    border-color: var(--voi-green);
-    transform: translateY(-2px);
+.learn-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
 }
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
     color: var(--voi-dark-green);
+    font-weight: 700;
+    line-height: 1.2;
 }
 
 .display-4 {
-    font-weight: 700;
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
 }
 
-/* Testimonials */
-.testimonial-card {
-    background: #ffffff;
-    padding: 2rem;
-    border-radius: 8px;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+.lead {
+    font-size: 1.25rem;
+    font-weight: 500;
 }
 
-/* Speaker Section */
-.speaker-image {
-    max-width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+/* Buttons */
+.btn-primary {
+    background: var(--gradient-accent);
+    border: none;
+    padding: 1rem 2.5rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .feature-card {
-        margin-bottom: 1rem;
+    .display-4 {
+        font-size: 2.5rem;
     }
-    
+
+    .hero-section {
+        padding: 6rem 0;
+    }
+
+    .feature-card {
+        margin-bottom: 1.5rem;
+    }
+
     .navbar-brand img {
-        height: 30px;
+        height: 32px;
+    }
+
+    .learn-section {
+        padding: 4rem 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+
+    .lead {
+        font-size: 1.1rem;
     }
 }
