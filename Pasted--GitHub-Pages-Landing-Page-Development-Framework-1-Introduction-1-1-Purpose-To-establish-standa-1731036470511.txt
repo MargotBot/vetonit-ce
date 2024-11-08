@@ -1,0 +1,354 @@
+
+
+GitHub Pages Landing Page Development Framework
+
+1. Introduction
+
+1.1 Purpose
+
+To establish standardized procedures and guidelines for creating, deploying, and managing landing pages using GitHub Pages, ensuring consistency and quality across all projects.
+
+1.2 Scope
+
+Applicable to all developers and team members involved in creating and maintaining landing pages hosted on GitHub Pages.
+
+1.3 Audience
+
+	•	Web Developers
+	•	Project Managers
+	•	QA Engineers
+	•	DevOps Engineers
+
+2. Repository Setup Standards
+
+2.1 Naming Conventions
+
+	•	User/Organization Sites: username.github.io
+	•	Project Sites: Descriptive names such as landing-page-1, promo-campaign-summer2024
+
+2.2 Repository Initialization
+
+	•	Public Repository: Mandatory for GitHub Pages hosting under free accounts.
+	•	Initialize with README: Yes, to provide project documentation.
+	•	.gitignore: Include standard web project templates (e.g., Node, Jekyll).
+
+2.3 Folder Structure
+
+Maintain a clear and organized structure.
+
+Example Structure:
+
+repository-name/
+├── index.html
+├── about.html
+├── css/
+│   └── styles.css
+├── js/
+│   └── scripts.js
+├── images/
+│   └── logo.png
+├── assets/
+│   └── (additional assets)
+└── README.md
+
+2.4 Branch Strategy
+
+	•	Primary Branch: main for user/organization sites.
+	•	Project Sites: gh-pages branch or /docs folder within main.
+	•	Feature Branches: For developing new features or updates.
+
+3. GitHub Pages Configuration
+
+3.1 Enabling GitHub Pages
+
+	1.	Navigate to Repository Settings:
+	•	Go to your repository on GitHub.
+	•	Click on the “Settings” tab.
+	2.	Locate Pages Section:
+	•	Scroll to “Pages”.
+	3.	Select Source:
+	•	Branch: main or gh-pages.
+	•	Folder: / (root) or /docs.
+	•	Click “Save”.
+
+3.2 Custom Domain Setup (Optional)
+
+	•	Add Custom Domain:
+	•	Enter your custom domain in the “Custom domain” field.
+	•	DNS Configuration:
+	•	Point your domain’s DNS to GitHub Pages as per GitHub’s documentation.
+	•	CNAME File:
+	•	Ensure a CNAME file exists in the repository root with the custom domain name.
+
+3.3 SSL Configuration
+
+	•	Enforce HTTPS: Enable in Pages settings for secure access.
+	•	Automatic SSL: Managed by GitHub Pages for both github.io and custom domains.
+
+4. Development Guidelines
+
+4.1 HTML Standards
+
+	•	Semantic HTML: Use semantic tags (e.g., <header>, <main>, <footer>).
+	•	Accessibility: Adhere to WCAG standards.
+	•	Meta Tags: Include relevant meta titles, descriptions, and viewport settings.
+
+4.2 CSS Standards
+
+	•	Responsive Design: Utilize media queries and flexible layouts.
+	•	Consistency: Maintain consistent styling across all landing pages.
+	•	Optimization: Minify CSS files for performance.
+
+4.3 JavaScript Standards
+
+	•	Modularity: Write modular, reusable code.
+	•	Performance: Optimize scripts to prevent blocking rendering.
+	•	Security: Avoid inline scripts; use external JS files.
+
+4.4 Asset Management
+
+	•	Images: Optimize for web (compressed formats, appropriate resolutions).
+	•	Fonts: Use web-safe fonts or include necessary font files.
+	•	Icons: Utilize SVGs for scalability and performance.
+
+4.5 Responsive Design
+
+	•	Mobile-First Approach: Design for mobile devices first, then scale up.
+	•	Testing: Ensure compatibility across various devices and screen sizes.
+
+5. Technical Criteria for GitHub Repositories
+
+5.1 Repository Configuration
+
+	•	Public Repository: Required for free GitHub Pages hosting.
+	•	Branch Selection: Use main or gh-pages as per setup.
+	•	Folder Structure: Maintain a clear and organized file structure.
+
+5.2 Content Standards
+
+	•	Static Content: Only HTML, CSS, JS, images, and other static files.
+	•	No Server-Side Code: GitHub Pages does not support server-side languages like PHP, Python, or Ruby.
+	•	Asset Optimization: Optimize images and minify CSS/JS for faster load times.
+
+5.3 Security
+
+	•	HTTPS: Ensure all resources are loaded over HTTPS to prevent mixed content issues.
+	•	CSP Headers: Implement Content Security Policy headers if necessary.
+	•	Regular Updates: Keep dependencies updated to mitigate vulnerabilities.
+
+5.4 Performance Optimization
+
+	•	Fast Load Times: Optimize assets for quick loading.
+	•	CDN Usage: GitHub Pages serves content via a CDN; leverage this for global distribution.
+	•	Caching: Utilize browser caching by setting appropriate cache headers.
+
+5.5 Responsiveness and Accessibility
+
+	•	Responsive Design: Ensure the landing page adapts to various screen sizes.
+	•	Accessibility Standards: Adhere to WCAG guidelines for accessibility.
+
+5.6 SEO Best Practices
+
+	•	Meta Information: Include relevant meta tags for SEO.
+	•	Readable URLs: Use clean and descriptive URLs.
+	•	Sitemap: Optionally include a sitemap.xml for better indexing.
+
+5.7 Integration with Other Platforms
+
+	•	Consistent Design: Maintain consistent design aesthetics across all platforms.
+	•	Navigation: Ensure easy navigation between different sections or platforms.
+	•	Testing: Regularly test embedded or linked content across different browsers and devices.
+
+6. Deployment Workflow
+
+6.1 Local Development
+
+	1.	Develop Locally:
+	•	Use a local development environment (e.g., Visual Studio Code).
+	•	Create and test your landing page locally.
+	2.	Version Control:
+	•	Commit changes regularly with clear commit messages.
+
+git add .
+git commit -m "Initial commit: Add landing page structure"
+
+
+
+6.2 Pushing to GitHub
+
+	1.	Push Changes:
+
+git push origin main
+
+	•	Replace main with your branch name if different.
+
+	2.	Automatic Deployment:
+	•	GitHub Pages will automatically build and deploy your site upon pushing changes.
+
+6.3 Continuous Integration (Optional)
+
+	•	GitHub Actions: Set up workflows to automate testing, building, and deployment.
+	•	Static Site Generators: If using Jekyll or other generators, configure build steps accordingly.
+
+7. Managing Multiple Landing Pages
+
+7.1 Separate Repositories
+
+	•	Isolation: Each landing page resides in its own repository.
+	•	URL Structure: https://username.github.io/repository-name/
+
+7.2 Single Repository with Subdirectories
+
+	•	Organization: Use subdirectories for each landing page within a single repository.
+
+Example Structure:
+
+repository-name/
+├── landing-page-1/
+│   ├── index.html
+│   └── assets/
+├── landing-page-2/
+│   ├── index.html
+│   └── assets/
+└── README.md
+
+	•	Access URLs:
+	•	https://username.github.io/repository-name/landing-page-1/
+	•	https://username.github.io/repository-name/landing-page-2/
+
+7.3 Custom Domains and Paths
+
+	•	Use a custom domain with path-based routing if necessary, keeping in mind GitHub Pages’ limitations on dynamic routing.
+
+8. Automation and Maintenance
+
+8.1 Automated Builds
+
+	•	Static Site Generators: Use tools like Jekyll to automate site generation.
+	•	GitHub Actions: Automate tasks such as testing, building, and deploying using workflows.
+
+8.2 Regular Updates
+
+	•	Content Updates: Regularly update content to keep landing pages relevant.
+	•	Dependency Management: Ensure external libraries are up to date.
+
+8.3 Backup and Recovery
+
+	•	Version Control: Utilize Git’s version history for rollback if needed.
+	•	External Backups: Consider periodic backups to external storage for added safety.
+
+9. Best Practices
+
+9.1 Consistent Branding
+
+	•	Maintain consistent branding (colors, fonts, logos) across all landing pages for a unified user experience.
+
+9.2 Performance Monitoring
+
+	•	Use tools like Google PageSpeed Insights or GTmetrix to monitor and optimize performance.
+
+9.3 Accessibility Compliance
+
+	•	Ensure landing pages are accessible to users with disabilities by following WCAG guidelines.
+
+9.4 SEO Optimization
+
+	•	Regularly update SEO practices to improve visibility and ranking in search engines.
+
+10. Example Repository Setup
+
+Step 1: Create Repository
+
+	•	Name: landing-page-1 (for a project site).
+	•	Initialize: Include a README.
+
+Step 2: Clone Repository
+
+git clone https://github.com/username/landing-page-1.git
+cd landing-page-1
+
+Step 3: Add Landing Page Content
+
+	•	Create index.html:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page 1</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Landing Page 1</h1>
+    </header>
+    <main>
+        <p>Your content goes here.</p>
+        <button onclick="window.location.href='https://yourwixsite.com'">Back to Main Site</button>
+    </main>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
+
+
+	•	Add CSS and JS Files:
+	•	Create css/styles.css and js/scripts.js with desired styles and scripts.
+
+Step 4: Commit and Push
+
+git add .
+git commit -m "Add initial landing page content"
+git push origin main
+
+Step 5: Enable GitHub Pages
+
+	1.	Settings > Pages:
+	•	Source: main branch, / (root) folder.
+	•	Save.
+	2.	Access URL:
+	•	https://username.github.io/landing-page-1/
+
+Step 6: Verification
+
+	•	Visit the deployed URL to ensure the landing page is live and functioning as expected.
+
+11. Troubleshooting Common Issues
+
+11.1 404 Errors
+
+	•	Check Branch and Folder Settings: Ensure GitHub Pages is set to the correct branch and folder.
+	•	File Naming: Ensure the main file is named index.html.
+
+11.2 Mixed Content Issues
+
+	•	HTTPS: Ensure all resources (images, scripts, styles) are loaded over HTTPS.
+
+11.3 Custom Domain Issues
+
+	•	DNS Configuration: Verify that DNS records are correctly pointed to GitHub Pages.
+	•	CNAME File: Ensure a CNAME file exists in the repository root with your custom domain.
+
+11.4 Build Errors with Jekyll
+
+	•	Syntax Errors: Check for errors in _config.yml or template files.
+	•	Unsupported Plugins: GitHub Pages supports a limited set of Jekyll plugins.
+
+12. Additional Resources
+
+	•	GitHub Pages Documentation: https://docs.github.com/en/pages
+	•	Jekyll Documentation: https://jekyllrb.com/docs/
+	•	GitHub Learning Lab: https://lab.github.com/
+	•	Web Development Best Practices: MDN Web Docs
+
+End of Document
+
+Notes for AI Ingestion:
+
+	•	Structured Headings: Clearly defined sections and subsections facilitate understanding and retrieval.
+	•	Bullet Points & Numbered Lists: Enhance readability and allow for easy extraction of key points.
+	•	Code Blocks: Clearly delineated for technical instructions.
+	•	Consistent Formatting: Ensures uniformity across the document, aiding in parsing.
+	•	Conciseness: Information is presented succinctly to avoid unnecessary complexity.
+
+This structured approach ensures that an AI can efficiently parse, understand, and utilize the document for generating responses, automating tasks, or assisting in development processes.

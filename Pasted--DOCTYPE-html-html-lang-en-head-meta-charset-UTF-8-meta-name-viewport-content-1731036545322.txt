@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Controlled Substance Regulations - Vet On It CE</title>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="assets/images/vet-on-it-logo.png" alt="Vet On It Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Newsletter Signup</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Upcoming Conferences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Past Conferences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --voi-green: #8BC397;
+            --voi-dark-green: #567d60;
+            --voi-blue: #77ADCF;
+            --voi-text: #2D3436;
+            --voi-background: #FAF9F6;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: var(--voi-text);
+            background-color: var(--voi-background);
+        }
+
+        .bg-dark {
+            background-color: var(--voi-background) !important;
+            color: var(--voi-text);
+        }
+
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .navbar-brand img {
+            height: 40px;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            padding: 2.5rem;
+            border-radius: 16px;
+            height: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--voi-blue);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--voi-blue);
+            background: rgba(119, 173, 207, 0.1);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            margin-left: -0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            background: var(--voi-blue);
+            color: white;
+            transform: rotate(5deg);
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: 1rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--voi-green);
+            border-radius: 2px;
+        }
+
+        .section-divider {
+            height: 4px;
+            background: linear-gradient(90deg, var(--voi-blue), var(--voi-green));
+            border-radius: 2px;
+            margin: 4rem 0;
+            width: 100%;
+            opacity: 0.3;
+        }
+
+        .bg-light-wave {
+            background-color: var(--voi-background);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bg-light-wave::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: linear-gradient(135deg, transparent 33.33%, var(--voi-background) 33.33%, var(--voi-background) 66.66%, transparent 66.66%);
+            background-size: 20px 40px;
+            background-repeat: repeat-x;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-card {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            color: #333;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #666;
+        }
+
+        .speaker-image {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .speaker-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .speaker-container {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background-color: var(--voi-blue);
+            border-color: var(--voi-blue);
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            border-radius: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--voi-green);
+            border-color: var(--voi-green);
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--voi-dark-green);
+        }
+
+        .display-4 {
+            font-weight: 700;
+            color: var(--voi-dark-green);
+        }
+
+        .lead {
+            color: var(--voi-text);
+            font-weight: 400;
+        }
+
+        #countdown {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffc107;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: #e7f1ff;
+            color: #0066cc;
+        }
+
+        @media (max-width: 768px) {
+            .feature-card {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="py-5 text-center bg-dark">
+        <div class="container">
+            <h1 class="display-4">Master Controlled Substance Regulations</h1>
+            <p class="lead">Protect Your Practice and Patients</p>
+            <div id="countdown" class="my-4"></div>
+            <a href="https://www.vetonit.org/event-details/keeping-controlled-substances-under-control-2" class="btn btn-primary btn-lg" target="_blank">Register Now</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h2>Live Zoom Webinar</h2>
+                        <p class="lead">Monday, November 18th, 2024</p>
+                        <p>6:00 PM - 8:00 PM Eastern</p>
+                        <p class="text-muted">Recording available for all registrants</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>What You'll Earn</h3>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-certificate me-2"></i> 2 hours of RACE-approved Opioid Veterinary CE credits</li>
+                                    <li><i class="fas fa-check me-2"></i> Course Tracking #20-1159184</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 bg-light-wave">
+            <div class="container">
+                <h2 class="section-title">Why Attend?</h2>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-virus"></i>
+                            </div>
+                            <h3 class="h4">Master PDMP Systems</h3>
+                            <p>Navigate prescription drug monitoring programs confidently and avoid common compliance pitfalls that could put your practice at risk.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <h3 class="h4">Protect Your Practice</h3>
+                            <p>Develop legally-sound protocols for controlled substance management and stay compliant with current DEA regulations.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-book-medical"></i>
+                            </div>
+                            <h3 class="h4">Latest Guidelines</h3>
+                            <p>Stay current with the newest opioid prescribing guidelines and documentation requirements for veterinary practices.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3 class="h4">Risk Management</h3>
+                            <p>Learn effective strategies to prevent drug diversion and implement robust security protocols for controlled substances.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-clipboard-list"></i>
+                            </div>
+                            <h3 class="h4">Practical Solutions</h3>
+                            <p>Get actionable templates and checklists for maintaining compliant recordkeeping and inventory management systems.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3 class="h4">Expert Guidance</h3>
+                            <p>Benefit from Dr. Forsythe's extensive experience in veterinary pharmacology and regulatory compliance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-divider"></div>
+        </section>
+
+        <section class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">About the Speaker</h2>
+                <div class="row align-items-center">
+                    <div class="col-md-4 mb-4 mb-md-0">
+                        <div class="speaker-container">
+                            <img src="assets/images/speaker.jpg" alt="Dr. Lauren Forsythe" class="speaker-image mb-3">
+                            <div class="text-center">
+                                <h3 class="h4 mb-2">Dr. Lauren Forsythe</h3>
+                                <p class="text-muted mb-0">PharmD, DICVP, FSVHP</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="ps-md-4">
+                            <h3 class="mb-4">About the Speaker</h3>
+                            <p class="lead mb-3">Clinical Assistant Professor at University of Illinois Urbana-Champaign College of Veterinary Medicine</p>
+                            <p>A renowned expert in veterinary pharmacology and compliance, Dr. Forsythe brings extensive experience in clinical pharmacy practice and regulatory requirements. Her expertise in controlled substance management and commitment to veterinary education makes her uniquely qualified to guide practitioners through complex regulatory landscapes.</p>
+                            <ul class="list-unstyled mt-4">
+                                <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Specialist in veterinary pharmacy practices</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Expert in DEA compliance and regulations</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Experienced educator and clinical instructor</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 bg-dark">
+            <div class="container">
+                <h2 class="text-center mb-4">What Attendees Say</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"I teach neuroanatomy and I sign up for your 'Neuro in a Nutshell' event as a means to keep up-to-date. Thank you so much!"</p>
+                            <p class="testimonial-author">— Shawna, DVM</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"GREAT JOB! Thank you for putting this lecture on."</p>
+                            <p class="testimonial-author">— Irina, happy Dermatology and Otology attendee</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">FAQ</h2>
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                What if I can't attend live?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Don't worry! We'll record the presentation and make it available to everyone who registers.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="register" class="py-5 bg-dark">
+            <div class="container text-center">
+                <h2 class="mb-4">Ready to Register?</h2>
+                <p class="lead mb-4">Join us for this essential webinar on controlled substance regulations.</p>
+                <a href="https://www.vetonit.org/event-details/keeping-controlled-substances-under-control-2" class="btn btn-primary btn-lg" target="_blank">
+                    Register Now - $50
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-4 text-center">
+        <div class="container">
+            <p>Questions? Contact us at vetonitce@gmail.com</p>
+            <p>Vet On It, LLC | ©2024</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Countdown Timer Script -->
+    <script>
+        function updateCountdown() {
+            const eventDate = new Date('2024-11-18T18:00:00-05:00').getTime();
+            const now = new Date().getTime();
+            const difference = eventDate - now;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s until the webinar`;
+
+            if (difference < 0) {
+                clearInterval(countdownTimer);
+                document.getElementById('countdown').innerHTML = "Event has started!";
+            }
+        }
+
+        updateCountdown();
+        const countdownTimer = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
