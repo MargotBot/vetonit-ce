@@ -1,12 +1,27 @@
-/* Previous CSS content remains the same until line 149 */
+:root {
+    --voi-primary: #2D3FE1;
+    --voi-secondary: #00D0B0;
+    --voi-dark: #1A1F3C;
+    --voi-light: #F8FAFC;
+    --voi-accent: #FF6B6B;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--voi-dark);
+    background-color: var(--voi-light);
+    line-height: 1.6;
+}
+
+/* Speaker Image Styling */
 .speaker-image {
     width: 100%;
     height: auto;
     aspect-ratio: 3/4;
     object-fit: cover;
     border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: all 0.4s ease;
+    box-shadow: 0 12px 24px rgba(26, 31, 60, 0.12);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     transform-origin: center;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -17,9 +32,14 @@
     background: white;
     padding: 1.5rem;
     border-radius: 20px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-    transition: all 0.4s ease;
+    box-shadow: 0 16px 32px rgba(26, 31, 60, 0.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
+}
+
+.speaker-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(26, 31, 60, 0.12);
 }
 
 .speaker-card:hover .speaker-image {
@@ -31,6 +51,81 @@
     text-align: center;
 }
 
+.speaker-info h3 {
+    color: var(--voi-dark);
+    margin-bottom: 0.5rem;
+}
+
+/* Feature Cards */
+.feature-card {
+    background: linear-gradient(135deg, white, var(--voi-light));
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 12px 24px rgba(26, 31, 60, 0.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--voi-primary), var(--voi-secondary));
+    transform: scaleX(0);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(26, 31, 60, 0.12);
+}
+
+.feature-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Button Styles */
+.btn-primary {
+    background: linear-gradient(135deg, var(--voi-primary), var(--voi-secondary));
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(45, 63, 225, 0.2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(45, 63, 225, 0.3);
+    background: linear-gradient(135deg, var(--voi-secondary), var(--voi-primary));
+}
+
+/* Section Backgrounds */
+.hero-section {
+    background: linear-gradient(135deg, var(--voi-primary), var(--voi-secondary));
+    color: var(--voi-light);
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/pattern.svg');
+    opacity: 0.1;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
     .speaker-card {
         margin-bottom: 2rem;
@@ -41,6 +136,8 @@
         width: 100%;
         object-fit: cover;
     }
+    
+    .feature-card {
+        margin-bottom: 1.5rem;
+    }
 }
-
-/* Rest of the CSS file remains the same */
