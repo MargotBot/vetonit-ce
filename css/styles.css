@@ -10,6 +10,37 @@
     transform-origin: center;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    display: block;
+}
+
+.speaker-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.speaker-card:hover .speaker-image {
+    transform: scale(1.02);
+}
+
+.speaker-info {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .speaker-card {
+        margin-bottom: 2rem;
+    }
+    
+    .speaker-image {
+        max-height: 500px;
+        width: 100%;
+        object-fit: cover;
+    }
 }
 
 /* Rest of the CSS file remains the same */
