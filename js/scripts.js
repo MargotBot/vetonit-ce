@@ -17,7 +17,32 @@ function updateCountdown() {
     }
 }
 
-// Initialize Bootstrap components
+// Section Fade Animation
+function handleScrollAnimation() {
+    const elements = document.querySelectorAll('.section-fade-up');
+    
+    elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementBottom = element.getBoundingClientRect().bottom;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight * 0.75 && elementBottom > 0) {
+            element.classList.add('visible');
+        }
+    });
+}
+
+// Navbar Scroll Effect
+function handleNavbarScroll() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+}
+
+// Initialize Components
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize tooltips
     const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
@@ -34,6 +59,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Start countdown
     updateCountdown();
     setInterval(updateCountdown, 1000);
+
+    // Initial check for scroll animations
+    handleScrollAnimation();
+    handleNavbarScroll();
+});
+
+// Scroll event listeners
+window.addEventListener('scroll', () => {
+    handleScrollAnimation();
+    handleNavbarScroll();
 });
 
 // Smooth scroll for navigation links

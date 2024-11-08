@@ -14,7 +14,7 @@ body {
     line-height: 1.6;
 }
 
-/* Hero Section */
+/* Hero Section with Enhanced Overlay */
 .hero-section {
     position: relative;
     background-image: url('../assets/images/hero-bg.svg');
@@ -31,7 +31,9 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: linear-gradient(135deg, 
+        rgba(119, 173, 207, 0.9),
+        rgba(139, 195, 151, 0.9));
     z-index: 1;
 }
 
@@ -40,7 +42,19 @@ body {
     z-index: 2;
 }
 
-/* Wave Divider */
+/* Enhanced Section Transitions */
+.section-fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.section-fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Wave Divider with Enhanced Style */
 .wave-divider {
     position: relative;
     height: 4rem;
@@ -53,9 +67,10 @@ body {
     bottom: 0;
     width: 100%;
     height: 100%;
+    filter: drop-shadow(0 -2px 2px rgba(0,0,0,0.1));
 }
 
-/* Navigation */
+/* Navigation with Glassmorphism */
 .navbar {
     background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
@@ -65,14 +80,21 @@ body {
     width: 100%;
     top: 0;
     z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    padding: 0.5rem 0;
+    background-color: rgba(255, 255, 255, 0.98);
 }
 
 .navbar-brand img {
     height: 40px;
     width: auto;
+    transition: all 0.3s ease;
 }
 
-/* Feature Cards */
+/* Enhanced Feature Cards */
 .feature-card {
     background: #ffffff;
     padding: 2.5rem;
@@ -107,30 +129,95 @@ body {
     transform: scale(1.1) rotate(5deg);
 }
 
-/* What You'll Learn Section */
-.learn-section {
-    background: var(--gradient-accent);
-    color: white;
-    padding: 6rem 0;
+/* Speaker Section Enhancement */
+.speaker-section {
     position: relative;
+    background: linear-gradient(135deg,
+        rgba(119, 173, 207, 0.1),
+        rgba(139, 195, 151, 0.1));
+    padding: 6rem 0;
 }
 
-.learn-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 16px;
-    padding: 2rem;
-    height: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+.speaker-card {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
 }
 
-.learn-card:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.15);
+.speaker-image {
+    width: 100%;
+    height: auto;
+    transition: all 0.3s ease;
 }
 
-/* Typography */
+.speaker-info {
+    padding: 2rem;
+}
+
+.speaker-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Enhanced CTA Section */
+.cta-section {
+    background: var(--gradient-accent);
+    padding: 6rem 0;
+    position: relative;
+    color: white;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../assets/images/pattern.svg');
+    opacity: 0.1;
+}
+
+/* Footer Enhancement */
+.footer {
+    background: var(--voi-dark-green);
+    color: white;
+    padding: 4rem 0 2rem;
+}
+
+.footer-title {
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+    margin-top: 3rem;
+}
+
+/* Enhanced Typography */
 h1, h2, h3, h4, h5, h6 {
     color: var(--voi-dark-green);
     font-weight: 700;
@@ -148,7 +235,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
 }
 
-/* Buttons */
+/* Enhanced Buttons */
 .btn-primary {
     background: var(--gradient-accent);
     border: none;
@@ -161,6 +248,14 @@ h1, h2, h3, h4, h5, h6 {
 .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.btn-outline-light {
+    border-width: 2px;
+    padding: 0.75rem 2rem;
+    font-weight: 500;
+    border-radius: 50px;
+    transition: all 0.3s ease;
 }
 
 /* Responsive Design */
@@ -181,8 +276,8 @@ h1, h2, h3, h4, h5, h6 {
         height: 32px;
     }
 
-    .learn-section {
-        padding: 4rem 0;
+    .footer {
+        padding: 3rem 0 1.5rem;
     }
 }
 
@@ -193,5 +288,9 @@ h1, h2, h3, h4, h5, h6 {
 
     .lead {
         font-size: 1.1rem;
+    }
+
+    .btn-primary {
+        padding: 0.75rem 2rem;
     }
 }
