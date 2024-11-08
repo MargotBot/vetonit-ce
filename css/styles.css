@@ -149,7 +149,14 @@ body {
 .speaker-image {
     width: 100%;
     height: auto;
-    transition: all 0.3s ease;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    border-radius: 16px 16px 0 0;
+    transition: all 0.4s ease;
+    transform-origin: center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .speaker-info {
@@ -158,6 +165,10 @@ body {
 
 .speaker-card:hover {
     transform: translateY(-5px);
+}
+
+.speaker-card:hover .speaker-image {
+    transform: scale(1.02);
 }
 
 /* Enhanced CTA Section */
@@ -279,6 +290,18 @@ h1, h2, h3, h4, h5, h6 {
     .footer {
         padding: 3rem 0 1.5rem;
     }
+
+    .speaker-card {
+        max-width: 400px;
+        margin: 0 auto 2rem;
+    }
+    
+    .speaker-image {
+        width: 100%;
+        height: auto;
+        max-height: 500px;
+        object-position: top center;
+    }
 }
 
 @media (max-width: 576px) {
@@ -292,5 +315,13 @@ h1, h2, h3, h4, h5, h6 {
 
     .btn-primary {
         padding: 0.75rem 2rem;
+    }
+
+    .speaker-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .speaker-section {
+        padding: 4rem 0;
     }
 }
