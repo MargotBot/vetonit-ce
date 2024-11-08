@@ -17,3 +17,17 @@ To run locally:
 2. Open index.html in your browser
 
 ## Directory Structure
+
+```
+/
+├── index.html
+├── css/
+│   └── styles.css
+├── js/
+│   └── scripts.js
+└── assets/
+    └── images/
+```
+
+## Live Site
+The site is deployed at: https://margotbot.github.io/vetonit-ce/
