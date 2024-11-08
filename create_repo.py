@@ -34,7 +34,7 @@ def create_github_repo():
         'has_issues': True,
         'has_projects': True,
         'has_wiki': True,
-        'auto_init': False  # Changed to False to avoid conflicts with our initial push
+        'auto_init': False
     }
     
     try:
@@ -85,22 +85,29 @@ def setup_git_and_push():
         
         print("Successfully pushed code to GitHub!")
         
-        # Enable GitHub Pages
+        # Enable GitHub Pages with custom domain
         headers = {
             'Authorization': f'Bearer {os.environ["GITHUB_TOKEN"]}',
             'Accept': 'application/vnd.github.v3+json'
         }
         
+        # Read custom domain from CNAME file
+        with open('CNAME', 'r') as f:
+            custom_domain = f.read().strip()
+        
         pages_data = {
             'source': {
                 'branch': 'main',
                 'path': '/'
-            }
+            },
+            'cname': custom_domain,
+            'https_enforced': True
         }
         
         repo_name = clone_url.split('/')[-1].replace('.git', '')
         username = clone_url.split('/')[-2]
         
+        # First, enable GitHub Pages
         pages_response = requests.post(
             f'https://api.github.com/repos/{username}/{repo_name}/pages',
             headers=headers,
@@ -109,6 +116,22 @@ def setup_git_and_push():
         
         if pages_response.status_code in [201, 204]:
             print("GitHub Pages enabled successfully!")
+            
+            # Then, update with custom domain
+            update_response = requests.put(
+                f'https://api.github.com/repos/{username}/{repo_name}/pages',
+                headers=headers,
+                data=json.dumps({
+                    'cname': custom_domain,
+                    'https_enforced': True
+                })
+            )
+            
+            if update_response.status_code in [200, 201, 204]:
+                print(f"Custom domain {custom_domain} configured successfully!")
+            else:
+                print(f"Warning: Could not configure custom domain: {update_response.status_code}")
+                print(update_response.json().get('message', 'Unknown error'))
         else:
             print(f"Warning: Could not enable GitHub Pages: {pages_response.status_code}")
             print(pages_response.json().get('message', 'Unknown error'))
