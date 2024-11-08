@@ -1,0 +1,6 @@
+<svg width="200" height="50" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+    <text x="10" y="35" font-family="Helvetica Neue" font-size="30" fill="#567d60">
+        VetOnIt CE
+    </text>
+    <path d="M180 10 L190 25 L180 40" stroke="#77ADCF" stroke-width="3" fill="none"/>
+</svg>
